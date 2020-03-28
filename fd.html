@@ -49,6 +49,15 @@
 						multiple:true
 					});
 					
+					var imgSrc = plus.storage.getItem("imgSrc");
+					if(imgSrc){
+						var imgs = document.createElement('img');
+						imgs.width = 100;
+						imgs.height = 100;
+						imgs.src = imgSrc;
+						mui("#cameras")[0].appendChild(imgs); 
+					}
+					
 					var camera = document.getElementById('camera');
 					camera.addEventListener('tap',function(){
 						var cameras = plus.camera.getCamera(1);
@@ -58,8 +67,9 @@
 							imgs.width = 100;
 							imgs.height = 100;
 							imgs.src = "file://"+plus.io.convertLocalFileSystemURL( path );
-							
 							mui("#cameras")[0].appendChild(imgs); 
+							
+							plus.storage.setItem('imgSrc', "file://"+plus.io.convertLocalFileSystemURL( path ));
 						});
 					})
 				})
