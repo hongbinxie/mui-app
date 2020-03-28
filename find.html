@@ -43,7 +43,7 @@
 						<span class="mui-navigate-right"></span>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" id='shake'>
 					<a href="javascript:;">
 						<img class="mui-media-object mui-pull-left" src="img/afh.png">
 						<div class="mui-media-body">
@@ -104,6 +104,13 @@
 					mui.openWindow({
 						url:'circle.html',
 						id:'circle.html'
+					})
+				})
+				
+				mui("#shake")[0].addEventListener("tap",function(){
+					mui.openWindow({
+						url:'shake.html',
+						id:'shake.html'
 					})
 				})
 			})
