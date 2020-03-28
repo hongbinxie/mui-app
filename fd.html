@@ -16,7 +16,9 @@
 		
 		<div class="mui-content">
 			<button class='mui-btn mui-btn-success' id='gallery'>相册</button>
+			<button id='camera' class='mui-btn mui-btn-blue'>拍照</button>
 			<div id='galleryImg'></div>
+			<div id='cameras'></div>
 		</div>
 		
 		<script src="js/mui.js"></script>
@@ -46,6 +48,20 @@
 					},function(){},{
 						multiple:true
 					});
+					
+					var camera = document.getElementById('camera');
+					camera.addEventListener('tap',function(){
+						var cameras = plus.camera.getCamera(1);
+						cameras.captureImage(function(path){
+							
+							var imgs = document.createElement('img');
+							imgs.width = 100;
+							imgs.height = 100;
+							imgs.src = "file://"+plus.io.convertLocalFileSystemURL( path );
+							
+							mui("#cameras")[0].appendChild(imgs); 
+						});
+					})
 				})
 			})
 		</script>
