@@ -19,7 +19,7 @@
 				<input type="search" class='mui-input-speech' placeholder='搜索'>
 			</div>
 			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" title="幸福">
 					<a href="javascript:;">
 						<img class="mui-media-object mui-pull-left" src="img/face.png">
 						<div class="mui-media-body">
@@ -28,7 +28,7 @@
 						</div>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" title="木屋">
 					<a href="javascript:;">
 						<img class="mui-media-object mui-pull-left" src="img/didi.png">
 						<div class="mui-media-body">
@@ -37,7 +37,7 @@
 						</div>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" title="CBD">
 					<a href="javascript:;">
 						<img class="mui-media-object mui-pull-left" src="img/cbd.jpg">
 						<div class="mui-media-body">
@@ -146,7 +146,20 @@
 		</div>
 		<script src="js/mui.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			mui.plusReady(function(){
+				mui('.mui-table-view').on('tap','li',function(){
+					
+					var title = this.getAttribute("title");
+					mui.openWindow({
+						url: "fd.html",
+						id: "fd.html",
+						extras:{
+							title:title
+						}
+					})
+				})
+			});
 		</script>
 	</body>
 
